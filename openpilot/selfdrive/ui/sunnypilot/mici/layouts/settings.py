@@ -11,7 +11,7 @@ from openpilot.selfdrive.ui.mici.widgets.button import BigCircleButton
 from openpilot.selfdrive.ui.mici.widgets.dialog import BigConfirmationDialog, BigDialog
 from openpilot.selfdrive.ui.sunnypilot.mici.layouts.sunnylink import SunnylinkLayoutMici
 from openpilot.selfdrive.ui.sunnypilot.mici.layouts.models import ModelsLayoutMici
-from openpilot.selfdrive.ui.sunnypilot.layouts.settings.vehicle import VehicleLayout
+from openpilot.selfdrive.ui.sunnypilot.mici.layouts.vehicle import VehicleLayoutMici
 from openpilot.selfdrive.ui.ui_state import ui_state
 from openpilot.system.ui.lib.application import gui_app, FontWeight
 from openpilot.system.ui.lib.multilang import tr
@@ -51,7 +51,7 @@ class SettingsLayoutSP(OP.SettingsLayout):
     models_btn = SettingsBigButton(tr("models"), "", gui_app.texture("../../sunnypilot/selfdrive/assets/offroad/icon_models.png", ICON_SIZE, ICON_SIZE))
     models_btn.set_click_callback(lambda: gui_app.push_widget(models_panel))
 
-    vehicle_panel = VehicleLayout()
+    vehicle_panel = VehicleLayoutMici()
     vehicle_btn = SettingsBigButton(tr("vehicle"), "", gui_app.texture("../../sunnypilot/selfdrive/assets/offroad/icon_vehicle.png", ICON_SIZE, ICON_SIZE))
     vehicle_btn.set_click_callback(lambda: gui_app.push_widget(vehicle_panel))
 
