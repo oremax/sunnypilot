@@ -25,20 +25,6 @@ from openpilot.selfdrive.car.helpers import convert_carControlSP, convert_to_cap
 from openpilot.sunnypilot.mads.helpers import set_alternative_experience, set_car_specific_params
 from openpilot.sunnypilot.selfdrive.car import interfaces as sunnypilot_interfaces
 
-# Register the EPS firmware of the owner's 2026 Tesla Model Y (HW4.5), read from the car's own
-# qlog on 2026-10-28. It is not in opendbc's FW_VERSIONS yet, and opendbc is a submodule of
-# another fork, so register it here at startup. The canonical upstream location for this entry
-# is opendbc/sunnypilot/car/tesla/fingerprints_ext.py (FW_VERSIONS_EXT).
-try:
-  from opendbc.car.structs import CarParams as _CarParamsFW
-  from opendbc.car.tesla.fingerprints import FW_VERSIONS as _TESLA_FW_VERSIONS
-  from opendbc.car.tesla.values import CAR as _TESLA_CAR
-  _eps_fw_list = _TESLA_FW_VERSIONS[_TESLA_CAR.TESLA_MODEL_Y][(_CarParamsFW.Ecu.eps, 0x730, None)]
-  if b'TeMYG4_Main_0.0.0 (92),Y4OC003.11.2' not in _eps_fw_list:
-    _eps_fw_list.append(b'TeMYG4_Main_0.0.0 (92),Y4OC003.11.2')
-except Exception:
-  pass
-
 REPLAY = "REPLAY" in os.environ
 
 EventName = log.OnroadEvent.EventName
